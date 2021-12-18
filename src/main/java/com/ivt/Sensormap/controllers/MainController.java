@@ -17,8 +17,8 @@ public class MainController {
     public String home(Model model) {
         model.addAttribute("sensor-map", "Main");
 //        создание объекта яндекс карты из таблицы
-//        Iterable<Sensor> sensors = sensorRepository.findAll();
-//        model.addAttribute("sensors",sensors);
+        Iterable<Sensor> sensors = sensorRepository.findAll();
+        model.addAttribute("sensors",sensors);
         return "main";
     }
 
