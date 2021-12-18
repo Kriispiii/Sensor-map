@@ -12,18 +12,18 @@ public class Sensor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long SENSOR_ID;
     private double  LATITUDE;
     private  double LONGITUDE;
     private String DATE;
     private String TIME;
 
     public Long getId() {
-        return id;
+        return SENSOR_ID;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.SENSOR_ID = id;
     }
 
     public double getLATITUDE() {

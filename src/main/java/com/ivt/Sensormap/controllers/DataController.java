@@ -27,7 +27,7 @@ public class DataController extends Thread{
         }
     }
     public void insert(Double latitude, Double longitude , String date, String time) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("INSERT INTO JC_SENSORS (LATITUDE, LONGITUDE, DATE, TIME) VALUES (?, ?, ?, ?)");
+        PreparedStatement stmt = con.prepareStatement("INSERT INTO SENSOR (LATITUDE, LONGITUDE, DATE, TIME) VALUES (?, ?, ?, ?)");
         stmt.setDouble(1, latitude);
         stmt.setDouble(2, longitude);
         stmt.setString(3, date);
@@ -37,7 +37,7 @@ public class DataController extends Thread{
     }
     public void select() throws SQLException {
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM JC_SENSORS");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM SENSOR");
         while (rs.next()) {
             String str = rs.getString("sensor_id")
                     + "| LATITUDE:"+ rs.getString(2)
