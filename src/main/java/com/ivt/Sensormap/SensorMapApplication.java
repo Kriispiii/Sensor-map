@@ -33,6 +33,7 @@ public class SensorMapApplication {
 					Double.parseDouble(matches[2]+"."+ matches[3]),
 					(matches[4] +"/" + matches[5] + "/" + matches[6]),
 					(matches[7] +"/" + matches[8] + "/" + matches[9]));
+			// нужна влажность!!!!!!!!!!!!!!!!!!!
 			//dt.insert(53.99,36.11,"2021/12/16","20/23/16");
 			// Процедура выборки
 			dt.select();

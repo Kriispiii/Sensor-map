@@ -27,12 +27,13 @@ public class DataController extends Thread{
         }
     }
     public void insert(Double latitude, Double longitude , String date, String time) throws SQLException {
-        PreparedStatement stmt = con.prepareStatement("INSERT INTO SENSOR (SENSOR_ID, LATITUDE, LONGITUDE, DATE, TIME) VALUES (?, ?, ?, ?, ?);");
+        PreparedStatement stmt = con.prepareStatement("INSERT INTO SENSOR (SENSOR_ID, LATITUDE, LONGITUDE, WET, DATE, TIME) VALUES (?, ?, ?, ?, ?, ?);");
         stmt.setLong(1, (latitude.intValue() % 100 + longitude.intValue() % 100));
         stmt.setDouble(2, latitude);
         stmt.setDouble(3, longitude);
-        stmt.setString(4, date);
-        stmt.setString(5, time);
+        stmt.setDouble(4, 36.6);// нужна влажность!!!!!!!!!!!!!!!!!!!
+        stmt.setString(5, date);
+        stmt.setString(6, time);
         stmt.executeUpdate();
         stmt.close();
     }
@@ -41,10 +42,11 @@ public class DataController extends Thread{
         ResultSet rs = stmt.executeQuery("SELECT * FROM SENSOR");
         while (rs.next()) {
             String str = rs.getString(1)
-                    + "| LATITUDE:"  + rs.getString(2)
-                    + "| LONGITUDE:" + rs.getString(3)
-                    + "| DATE:"      + rs.getString(4)
-                    + "| TIME:"      + rs.getString(5);
+                    + "| LATITUDE:"  + rs.getString("LATITUDE")
+                    + "| LONGITUDE:" + rs.getString("LONGITUDE")
+                    + "| WET:"       + rs.getString("WET")
+                    + "| DATE:"      + rs.getString("DATE")
+                    + "| TIME:"      + rs.getString("TIME");
             System.out.println("sensor:" + str);
         }
         rs.close();
