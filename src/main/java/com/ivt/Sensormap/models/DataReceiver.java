@@ -24,11 +24,7 @@ public class DataReceiver extends Thread{
             allMatches[count] = m.group();
             count++;
         }
-        /*
-        for(int i = 0; i < allMatches.length; i++){
-            System.out.println(allMatches[i]);
-        }
-         */
+        //учесть размер для влажности!!!!!!!!!!!!!!!!
         return allMatches;
     }
     public String[] waitConnection() throws IOException{

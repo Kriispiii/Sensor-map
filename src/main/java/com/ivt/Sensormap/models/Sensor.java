@@ -15,6 +15,7 @@ public class Sensor {
     private Long SENSOR_ID;
     private double  LATITUDE;
     private  double LONGITUDE;
+    private  double WET;
     private String DATE;
     private String TIME;
 
@@ -40,6 +41,14 @@ public class Sensor {
 
     public void setLONGITUDE(double LONGITUDE) {
         this.LONGITUDE = LONGITUDE;
+    }
+
+    public double getWET() {
+        return WET;
+    }
+
+    public void setWET(double WET) {
+        this.WET = WET;
     }
 
     public String getDATE() {
