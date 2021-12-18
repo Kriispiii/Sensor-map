@@ -18,7 +18,7 @@ public class SensorMapApplication {
 
                  */
 			DataController dt = new DataController("jdbc:mysql://localhost:3306/sensor",
-					"mysql", "1147");
+					"root", "");
 			dt.ConnectTo();
 			//DataReceiver rs = new DataReceiver(8183);
 			DataReceiver rs = new DataReceiver(8186);
