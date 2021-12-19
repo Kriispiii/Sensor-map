@@ -15,7 +15,9 @@
                 zoom: 8
             });
 
-            var mydata =JSON.parse(test)
+            var test=requiere('test');
+            var data=test.readFileSync('test.json', 'utf8')
+            var mydata =JSON.parse(data);
             var myPlacemark = new ymaps.Placemark([mydata[0].LONGITUDE, mydata[0].LATITUDE], {}, {
         preset: 'twirl#blueStretchyIcon'
     });
