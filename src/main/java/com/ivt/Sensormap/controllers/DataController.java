@@ -1,6 +1,19 @@
 package com.ivt.Sensormap.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
+//JSON
+import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+//JSON
 
 public class DataController extends Thread{
 
@@ -37,10 +50,11 @@ public class DataController extends Thread{
         stmt.executeUpdate();
         stmt.close();
     }
-    public void select() throws SQLException {
+    public void select() throws Exception {
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT * FROM SENSOR");
         while (rs.next()) {
+
             String str = rs.getString(1)
                     + "| LATITUDE:"  + rs.getString("LATITUDE")
                     + "| LONGITUDE:" + rs.getString("LONGITUDE")
@@ -48,11 +62,35 @@ public class DataController extends Thread{
                     + "| DATE:"      + rs.getString("DATE")
                     + "| TIME:"      + rs.getString("TIME");
             System.out.println("sensor:" + str);
+            //нужен массив!!!!!!!!!!!!!!!!!!!!
+            toJSON(rs.getInt("SENSOR_ID"),
+                    rs.getDouble("LATITUDE"),
+                    rs.getDouble("LONGITUDE"),
+                    rs.getDouble("WET"),
+                    rs.getString("DATE"),
+                    rs.getString("TIME"));
         }
         rs.close();
         stmt.close();
     }
     public Connection getCon(){
         return this.con;
+    }
+    public void toJSON(int SENSOR_ID, double LATITUDE, double LONGITUDE, double WET, String DATE, String TIME) throws  Exception{
+        JSONObject sampleObject = new JSONObject();
+        sampleObject.put("SENSOR_ID", SENSOR_ID);
+        sampleObject.put("LATITUDE", LATITUDE);
+        sampleObject.put("LONGITUDE", LONGITUDE);
+        sampleObject.put("WET", WET);
+        sampleObject.put("DATE", DATE);
+        sampleObject.put("TIME", TIME);
+
+       // JSONArray messages = new JSONArray();
+        //messages.add("Hey!");
+       // messages.add("What's up?!");
+
+        //sampleObject.put("messages", messages);
+        Files.write(Paths.get("D:\\test.json"), sampleObject.toString().getBytes());
+
     }
 }

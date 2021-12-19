@@ -6,14 +6,33 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
     </script>
     <script type="text/javascript">
+
         ymaps.ready(init);
         function init(){
+
             var myMap = new ymaps.Map("map", {
-                center: [52.9651, 36.0785],
+                center: [55.76, 37.64],
                 zoom: 8
             });
+            var mysql = require('mysql');
+            var latitude,longitude;
+            var con = mysql.createConnection({
+              host: "localhost",
+              user: "root",
+              password: "",
+              database: "sensor"
+            });
 
-            var myPlacemark = new ymaps.Placemark([55.76, 37.64], {}, {
+            con.connect(function(err) {
+              if (err) throw err;
+              con.query("SELECT LATITUDE, LONGITUDE FROM customers", function (err, result, fields) {
+                if (err) throw err;
+                latitude = result[0].LATITUDE;
+                longitude = result[0].LONGITUDE;
+              });
+            });
+
+            var myPlacemark = new ymaps.Placemark([latitude, longitude], {}, {
         preset: 'twirl#blueStretchyIcon'
     });
     myMap.geoObjects.add(myPlacemark);

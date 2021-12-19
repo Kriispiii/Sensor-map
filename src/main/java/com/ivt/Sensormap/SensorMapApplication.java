@@ -29,6 +29,7 @@ public class SensorMapApplication {
                         (matches[4] +"/" + matches[5] + "/" + matches[6]),
                         (matches[7] +"/" + matches[8] + "/" + matches[9]));
                  */
+			///to JSON
 			dt.insert(Double.parseDouble(matches[0]+"."+ matches[1]),
 					Double.parseDouble(matches[2]+"."+ matches[3]),
 					(matches[4] +"/" + matches[5] + "/" + matches[6]),
