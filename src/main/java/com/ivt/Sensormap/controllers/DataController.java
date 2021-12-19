@@ -4,15 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
 //JSON
-import org.json.*;
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
 //JSON
 
 public class DataController extends Thread{
@@ -84,13 +76,6 @@ public class DataController extends Thread{
         sampleObject.put("WET", WET);
         sampleObject.put("DATE", DATE);
         sampleObject.put("TIME", TIME);
-
-       // JSONArray messages = new JSONArray();
-        //messages.add("Hey!");
-       // messages.add("What's up?!");
-
-        //sampleObject.put("messages", messages);
         Files.write(Paths.get("D:\\test.json"), sampleObject.toString().getBytes());
-
     }
 }
