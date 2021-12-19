@@ -6,7 +6,7 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
     </script>
     <script type="text/javascript">
-
+        data= '[{"DATE":"2021/11/11","LONGITUDE":36.131121,"WET":36.6,"SENSOR_ID":89,"TIME":"11/11/11","LATITUDE":53.018182}]';
         ymaps.ready(init);
         function init(){
 
@@ -15,11 +15,9 @@
                 zoom: 8
             });
 
-            var test=requiere('test');
-            var data=test.readFileSync('test.json', 'utf8');
             var mydata =JSON.parse(data);
 
-            var myPlacemark = new ymaps.Placemark([mydata[0].LONGITUDE, mydata[0].LATITUDE], {}, {
+            var myPlacemark = new ymaps.Placemark([parseFloat(mydata[0].LATITUDE),parseFloat(mydata[0].LONGITUDE) ], {}, {
         preset: 'twirl#blueStretchyIcon'
     });
     myMap.geoObjects.add(myPlacemark);
