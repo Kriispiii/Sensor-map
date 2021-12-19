@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
     </script>
-    <script type="text/javascript" src="D:\test.json">
+    <script type="text/javascript">
 
         ymaps.ready(init);
         function init(){
@@ -16,8 +16,9 @@
             });
 
             var test=requiere('test');
-            var data=test.readFileSync('test.json', 'utf8')
+            var data=test.readFileSync('test.json', 'utf8');
             var mydata =JSON.parse(data);
+
             var myPlacemark = new ymaps.Placemark([mydata[0].LONGITUDE, mydata[0].LATITUDE], {}, {
         preset: 'twirl#blueStretchyIcon'
     });
