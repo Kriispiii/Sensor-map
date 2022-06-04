@@ -1,13 +1,13 @@
 package com.ivt.Sensormap.controllers;
 
 import com.ivt.Sensormap.models.Sensor;
-import com.ivt.Sensormap.repo.SensorRepository;
+import com.ivt.Sensormap.repository.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller//подгрузка сайта
+@Controller//Навигация
 public class MainController {
 
     @Autowired
@@ -16,7 +16,7 @@ public class MainController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("sensor-map", "Main");
-//        создание объекта яндекс карты из таблицы
+        //создание объекта яндекс карты из таблицы
         Iterable<Sensor> sensors = sensorRepository.findAll();
         model.addAttribute("sensors",sensors);
         return "main";

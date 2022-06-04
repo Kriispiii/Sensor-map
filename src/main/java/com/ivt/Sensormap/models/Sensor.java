@@ -1,69 +1,46 @@
 package com.ivt.Sensormap.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.lang.String;
+import javax.persistence.Table;
 
-//класс за счёт которого мы создаём бд
 @Entity
+@Table(name = "sensor")
 public class Sensor {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long SENSOR_ID;
-    private double  LATITUDE;
-    private  double LONGITUDE;
-    private  double WET;
-    private String DATE;
-    private String TIME;
+    @Column(name = "sensorId", nullable = false)
+    private Integer id;
 
-    public Long getId() {
-        return SENSOR_ID;
+    @Column(name = "isActive", nullable = false)
+    private Integer isActive;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        this.SENSOR_ID = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public double getLATITUDE() {
-        return LATITUDE;
+    public Integer getIsActive() {
+        return isActive;
     }
 
-    public void setLATITUDE(double LATITUDE) {
-        this.LATITUDE = LATITUDE;
+    public void setIsActive(Integer isActive) {
+        this.isActive = isActive;
     }
 
-    public double getLONGITUDE() {
-        return LONGITUDE;
-    }
-
-    public void setLONGITUDE(double LONGITUDE) {
-        this.LONGITUDE = LONGITUDE;
-    }
-
-    public double getWET() {
-        return WET;
-    }
-
-    public void setWET(double WET) {
-        this.WET = WET;
-    }
-
-    public String getDATE() {
-        return DATE;
-    }
-
-    public void setDATE(String DATE) {
-        this.DATE = DATE;
-    }
-
-    public String getTIME() {
-        return TIME;
-    }
-
-    public void setTIME(String TIME) {
-        this.TIME = TIME;
-    }
+/*
+  TODO [JPA Buddy] create field to map the 'latitude' column
+   Available actions: Define target Java type | Uncomment as is | Remove column mapping
+  @Column(name = "latitude", columnDefinition = "FLOAT(12) UNSIGNED not null")
+  private Object latitude;
+*/
+/*
+  TODO [JPA Buddy] create field to map the 'longitude' column
+   Available actions: Define target Java type | Uncomment as is | Remove column mapping
+  @Column(name = "longitude", columnDefinition = "FLOAT(12) UNSIGNED not null")
+  private Object longitude;
+*/
 }
