@@ -6,14 +6,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "access_rules")
-public class AccessRule {
+@Table(name = "type")
+public class Type {
     @Id
-    @Column(name = "accessLvl", nullable = false)
+    @Column(name = "typeId", nullable = false)
     private Integer id;
 
-    @Column(name = "dayRange")
-    private Integer dayRange;
+    @Column(name = "typeName", nullable = false, length = 45)
+    private String typeName;
 
     public Integer getId() {
         return id;
@@ -23,12 +23,12 @@ public class AccessRule {
         this.id = id;
     }
 
-    public Integer getDayRange() {
-        return dayRange;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setDayRange(Integer dayRange) {
-        this.dayRange = dayRange;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
 }

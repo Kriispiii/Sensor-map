@@ -4,25 +4,18 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class MatchuserandareaId implements Serializable {
-    private static final long serialVersionUID = -6924645017436235995L;
-    @Column(name = "userId", nullable = false)
-    private Integer userId;
-
+public class AreaId implements Serializable {
+    private static final long serialVersionUID = 4324796832893159961L;
     @Column(name = "areaId", nullable = false)
     private Integer areaId;
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    @Column(name = "owner_userId", nullable = false)
+    private Integer ownerUserid;
 
     public Integer getAreaId() {
         return areaId;
@@ -32,18 +25,26 @@ public class MatchuserandareaId implements Serializable {
         this.areaId = areaId;
     }
 
+    public Integer getOwnerUserid() {
+        return ownerUserid;
+    }
+
+    public void setOwnerUserid(Integer ownerUserid) {
+        this.ownerUserid = ownerUserid;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        MatchuserandareaId entity = (MatchuserandareaId) o;
+        AreaId entity = (AreaId) o;
         return Objects.equals(this.areaId, entity.areaId) &&
-                Objects.equals(this.userId, entity.userId);
+                Objects.equals(this.ownerUserid, entity.ownerUserid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(areaId, userId);
+        return Objects.hash(areaId, ownerUserid);
     }
 
 }

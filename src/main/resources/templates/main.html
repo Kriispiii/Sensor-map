@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -40,9 +40,10 @@
             <button style="display: inline-block;font-weight: 700;text-decoration: none;
   user-select: none;padding: .5em 2em;outline: none;border: 2px solid;border-radius: 1px;
   transition: 0.2s;">Сохранить данные</button>>
-            <button style="display: inline-block;font-weight: 700;text-decoration: none;
-  user-select: none;padding: .5em 2em;outline: none;border: 2px solid;border-radius: 1px;
-  transition: 0.2s;">Справка</button>>
+
+                <button th:action="@{/registration}"> </button>
+
+
         </div>
     </div>
 </footer>

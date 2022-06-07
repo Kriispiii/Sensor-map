@@ -1,20 +1,15 @@
 package com.ivt.Sensormap.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
 @Table(name = "user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userId", nullable = false)
     private Integer id;
-
-    @Column(name = "isActive", nullable = false)
-    private Integer isActive;
 
     @Column(name = "username", nullable = false, length = 45)
     private String username;
@@ -22,11 +17,17 @@ public class User {
     @Column(name = "email", nullable = false, length = 45)
     private String email;
 
-    @Column(name = "passwordhash", nullable = false, length = 45)
-    private String passwordhash;
+    @Column(name = "password", nullable = false,length = 255)
+    private String password;
 
     @Column(name = "registrationDate", nullable = false)
     private Instant registrationDate;
+
+    @Column(name = "isActive")
+    private Boolean isActive;
+
+    @Column(name = "role", length = 45)
+    private String role;
 
     public Integer getId() {
         return id;
@@ -34,14 +35,6 @@ public class User {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Integer isActive) {
-        this.isActive = isActive;
     }
 
     public String getUsername() {
@@ -60,12 +53,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPasswordhash() {
-        return passwordhash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordhash(String passwordhash) {
-        this.passwordhash = passwordhash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Instant getRegistrationDate() {
@@ -76,4 +69,19 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }
