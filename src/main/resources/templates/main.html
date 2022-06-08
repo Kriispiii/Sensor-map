@@ -6,7 +6,7 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
     </script>
     <script type="text/javascript">
-        data= '[{"DATE":"2021/11/11","LONGITUDE":36.131121,"WET":36.6,"SENSOR_ID":89,"TIME":"11/11/11","LATITUDE":53.018182}]';
+        // data= '[{"DATE":"2021/11/11","LONGITUDE":36.131121,"WET":36.6,"SENSOR_ID":89,"TIME":"11/11/11","LATITUDE":53.018182}]';
         ymaps.ready(init);
         function init(){
 
@@ -29,17 +29,11 @@
 <footer id="footer" class="footer-1" style=" background: #252525;position: absolute;bottom: 0;width: 100%;height: 20%;">
     <div class="container" style="height:100%;">
         <div style="padding-left:30%;padding-top:4%;padding-bottom:2%;">
-            <select style="display: inline-block;font-weight: 700;text-decoration: none;
-  user-select: none;padding: .5em 2em;outline: none;border: 2px solid;border-radius: 1px;
-  transition: 0.2s;">
-                <option>DATE:2021/11/11,WET:36.6,SENSOR_ID:89,TIME:11/11/11</option>
-            </select>
-            <button style="display: inline-block;font-weight: 700;text-decoration: none;
-  user-select: none;padding: .5em 2em;outline: none;border: 2px solid;border-radius: 1px;
-  transition: 0.2s;">Обновить</button>>
-            <button style="display: inline-block;font-weight: 700;text-decoration: none;
-  user-select: none;padding: .5em 2em;outline: none;border: 2px solid;border-radius: 1px;
-  transition: 0.2s;">Сохранить данные</button>>
+            <form action="/" method="post">
+                <input type="text" name="latitude" placeholder="Введите широту"><br><br>
+                <input type="text" name="longitude" placeholder="Введите долгота"><br><br>
+                <button type="submit">Добавить</button><br>
+            </form>
 
                 <button th:action="@{/registration}"> </button>
 

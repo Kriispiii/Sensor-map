@@ -14,7 +14,7 @@ public class AreaId implements Serializable {
     @Column(name = "areaId", nullable = false)
     private Integer areaId;
 
-    @Column(name = "owner_userId", nullable = false)
+    @Column(name = "user_userId", nullable = false)
     private Integer ownerUserid;
 
     public Integer getAreaId() {

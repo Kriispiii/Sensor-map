@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class Sensor {
     @Id
     @JsonProperty("id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "sensorId", nullable = false)
     private Integer id;
 
@@ -31,6 +32,12 @@ public class Sensor {
     private User userUser;
 
     public Sensor() {
+    }
+
+    public Sensor(Float latitude, Float longitude) {
+        this.isActive = 1;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public Integer getId() {

@@ -10,7 +10,7 @@ public class Area {
 
     @MapsId("ownerUserid")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "owner_userId", nullable = false)
+    @JoinColumn(name = "User_userId", nullable = false)
     private User ownerUser;
 
     @Column(name = "areaName", nullable = false, length = 45)

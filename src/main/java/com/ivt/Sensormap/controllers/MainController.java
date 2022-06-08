@@ -1,5 +1,6 @@
 package com.ivt.Sensormap.controllers;
 
+import com.ivt.Sensormap.models.Sensor;
 import com.ivt.Sensormap.models.User;
 import com.ivt.Sensormap.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.Instant;
-import java.util.Map;
+import java.time.LocalDateTime;
 
 @Controller//Навигация
 public class MainController {
@@ -33,23 +34,23 @@ public class MainController {
     }
 
     @PostMapping("/registration")
-    public String addUser   (@RequestParam String username,
-                             @RequestParam String email,
-                             @RequestParam String password,
+    public String addUser   (@RequestParam("username") String username,
+                             @RequestParam("email") String email,
+                             @RequestParam("password") String password,
                              Model model) {
 
         User userFromDb =userRepository.findByUsername(username);
         if(userFromDb!=null){
-            return "/registration";
+            return "registration";
         }
         User user= new User();
         user.setUsername(username);
         user.setEmail(email);
         String encrptedPwd = passwordEncoder.encode(password);
         user.setPassword(encrptedPwd);
-        user.setActive(true);
+        user.setIsActive(1);
         user.setRole("admine");
-        user.setRegistrationDate(Instant.now());
+        user.setRegistrationDate(LocalDateTime.now());
         userRepository.save(user);
 
         return "main";
