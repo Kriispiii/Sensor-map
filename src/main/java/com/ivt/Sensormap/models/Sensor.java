@@ -26,7 +26,7 @@ public class Sensor {
     @Column(name = "longitude")
     private Float longitude;
 
-    @JsonProperty("User_userId")
+    @JsonIgnore()
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "User_userId", nullable = false)
     private User userUser;
@@ -60,6 +60,21 @@ public class Sensor {
         return userUser;
     }
 
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
 
     public void setUserUser(User userUser) {
         this.userUser = userUser;
