@@ -9,8 +9,6 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     <script type="text/javascript">
         // data= '[{"DATE":"2021/11/11","LONGITUDE":36.131121,"WET":36.6,"SENSOR_ID":89,"TIME":"11/11/11","LATITUDE":53.018182}]';
-
-
         ymaps.ready(init);
         function init(){
 
@@ -21,9 +19,10 @@
 
             $.getJSON('http://localhost:8080/jsonData', function(data) {
                 for(let i = 0;i<data.length;i++){
-            var myPlacemark = new ymaps.Placemark([parseFloat(data[i].latitude),parseFloat(data[i].longitude) ], {}, {
-            preset: 'twirl#blueStretchyIcon'
-             });
+
+            var myPlacemark = new ymaps.Placemark([parseFloat(data[i].latitude),parseFloat(data[i].longitude) ],
+                { },
+                    {preset: 'twirl#blueStretchyIcon'});
             myMap.geoObjects.add(myPlacemark);
                 }
             });
@@ -33,16 +32,30 @@
 </head>
 <body style="margin: 0;padding: 0;height: 100%;">
 <div id="map" style="width: 100%; height: 750px;padding: 0px;"></div>
-<footer id="footer" class="footer-1" style=" background: #252525;position: absolute;bottom: 0;width: 100%;height: 20%;">
+<footer id="footer" class="footer-1" style=" background: #FFF8DC;position: absolute;bottom: 0;width: 100%;height: 30%;">
     <div class="container" style="height:100%;">
-        <div style="padding-left:30%;padding-top:4%;padding-bottom:2%;">
+        <div style="padding:2% 8%;display:flex;justify-content:space-between;align-items:center;">
+            <button action="/registration">Регистрация </button>
             <form action="/" method="post">
+                <h2>Добавить датчик</h2>
                 <input type="text" name="latitude" placeholder="Введите широту"><br><br>
                 <input type="text" name="longitude" placeholder="Введите долгота"><br><br>
                 <button type="submit">Добавить</button><br>
             </form>
+            <form action="/update" method="post">
+                <h2>Редактировать датчик</h2>
+                <input type="text" name="idUpdate" placeholder="Введите id"><br><br>
+                <input type="text" name="latitudeUpdate" placeholder="Введите широту"><br><br>
+                <input type="text" name="longitudeUpdate" placeholder="Введите долгота"><br><br>
+                <button type="submit">Добавить</button><br>
+            </form>
+            <form action="/delete" method="post">
+                <h2>Удалить датчик</h2>
+                <input type="text" name="idDelete" placeholder="Введите id"><br><br>
+                <button type="submit">Удалить</button><br>
+            </form>
 
-                <button th:action="@{/registration}"> </button>
+
 
 
         </div>

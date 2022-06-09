@@ -11,10 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -53,17 +50,24 @@ public class SensorContorller {
         response.getWriter().write(json);
     }
 
-//    @PostMapping("/")
-//    public String updateSensor(@PathVariable(value = "id") Integer id,
-//                                    @RequestParam("latitudeUpdate") Float latitude,
-//                                    @RequestParam("longitudeUpdate") Float longitude,
-//                                    Model model) {
-//        Sensor sensor = sensorRepository.findById(id).orElseThrow();
-//        sensor.setLatitude(latitude);
-//        sensor.setLongitude(longitude);
-//        sensorRepository.save(sensor);
-//        return "main";
-//    }
+    @PostMapping("/update")
+    public String updateSensor(@RequestParam("idUpdate") Integer id,
+                                    @RequestParam("latitudeUpdate") Float latitude,
+                                    @RequestParam("longitudeUpdate") Float longitude,
+                                    Model model) {
+        Sensor sensor = sensorRepository.findById(id).orElseThrow();
+        sensor.setLatitude(latitude);
+        sensor.setLongitude(longitude);
+        sensorRepository.save(sensor);
+        return "main";
+    }
+
+    @PostMapping("/delete")
+    public String deleteSensor(@RequestParam("idDelete") Integer id,Model model){
+        Sensor sensor= sensorRepository.findById(id).orElseThrow();
+        sensorRepository.delete(sensor);
+        return "main";
+    }
 
 
 
